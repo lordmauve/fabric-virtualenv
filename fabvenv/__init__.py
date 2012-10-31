@@ -94,7 +94,7 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
     with virtualenv(path):
         for e in eggs:
             with settings(warn_only=True):
-                run('easy_install ' + e)
+                run("easy_install '%s'" % e)
         for d in dependencies:
-            run('pip install ' + d)
+            run("pip install '%s'" % d)
 
