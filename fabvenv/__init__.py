@@ -91,6 +91,16 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
             args=args,
             path=path
         ))
+    else:
+        # Update system-site-packages
+        no_global_path = posixpath.join(path,
+            'lib/python*/no-global-site-packages.txt'
+        )
+        if system_site_packages:
+            run('rm -f ' + no_global_path)
+        else:
+            run('touch ' + no_global_path)
+
     with virtualenv(path):
         for e in eggs:
             with settings(warn_only=True):

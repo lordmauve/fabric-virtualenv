@@ -32,8 +32,7 @@ operations in the context of the virtualenv.
         ``easy_install``. Eggs can be used to speed up deployments that require
         libraries to be compiled.
     * ``system_site_packages`` - If True, the newly-created virtualenv will
-        expose the system site package. If False, these will be hidden. Note
-        that this only takes effect on a newly-created virtualenv.
+        expose the system site package. If False, these will be hidden.
 
 ``fabvenv.prepare_virtualenv()``
 
@@ -42,3 +41,10 @@ operations in the context of the virtualenv.
     downloaded from the virtualenv github and saved as ``~/virtualenv.py``.
 
     The virtualenv command that is prepared is available as ``env.virtualenv``.
+
+
+Changelog
+---------
+
+* **0.2.0** - make_virtualenv now updates ``system_site_packages`` flag on
+  previously-created virtualenvs.
