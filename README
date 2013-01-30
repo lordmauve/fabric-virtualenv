@@ -46,5 +46,7 @@ operations in the context of the virtualenv.
 Changelog
 ---------
 
+* **0.2.1** - Fix bug in make_virtualenv with virtualenv.py installed by prepare_virtualenv.
+
 * **0.2.0** - make_virtualenv now updates ``system_site_packages`` flag on
   previously-created virtualenvs.
