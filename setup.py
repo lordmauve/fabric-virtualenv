@@ -3,9 +3,9 @@ from setuptools import setup, find_packages
 
 setup(
     name="fabric-virtualenv",
-    version="0.2.1",
+    version="0.3.0",
     author='Daniel Pope',
-    author_email='ext-dan.pope@vertu.com',
+    author_email='lord.mauve@gmail.com',
     url='http://pypi.python.org/pypi/fabric-virtualenv/',
     description=(
         "Some additional functions for working with remote virtualenvs "
