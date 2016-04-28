@@ -68,7 +68,8 @@ def prepare_virtualenv():
         env.virtualenv = '~/virtualenv.py'
 
 
-def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
+def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True,
+                    python_binary=None):
     """Create or update a virtualenv in path.
 
     :param path: The path to the virtualenv. This path will be created if it
@@ -78,6 +79,8 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
         to speed up deployments that require libraries to be compiled.
     :param system_site_packages: If True, the newly-created virtualenv will
         expose the system site package. If False, these will be hidden.
+    :param python_binary: If not None, should be the path to python binary
+        that will be used to create the virtualenv.
 
     """
     if not exists(path):
@@ -86,6 +89,10 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
             args = '--system-site-packages' if system_site_packages else ''
         else:
             args = '--no-site-packages' if not system_site_packages else ''
+
+        if python_binary:
+            args += '-p {}'.format(python_binary)
+
         run('{virtualenv} {args} {path}'.format(
             virtualenv=env.virtualenv,
             args=args,
@@ -93,8 +100,8 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
         ))
     else:
         # Update system-site-packages
-        no_global_path = posixpath.join(path,
-            'lib/python*/no-global-site-packages.txt'
+        no_global_path = posixpath.join(
+            path, 'lib/python*/no-global-site-packages.txt'
         )
         if system_site_packages:
             run('rm -f ' + no_global_path)
@@ -107,4 +114,3 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True):
                 run("easy_install '%s'" % e)
         for d in dependencies:
             run("pip install '%s'" % d)
-
