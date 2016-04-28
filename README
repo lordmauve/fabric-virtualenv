@@ -24,15 +24,11 @@ operations in the context of the virtualenv.
 
     Create or update a virtualenv in path, installing the given packages and eggs.
 
-    * ``path`` - The path to the virtualenv. This path will be created if it
-        does not already exist.
-    * ``dependencies`` - a list of paths or URLs to Python packages to install
-        with ``pip``.
-    * ``eggs`` - a list of paths or URLs to eggs to install with
-        ``easy_install``. Eggs can be used to speed up deployments that require
-        libraries to be compiled.
-    * ``system_site_packages`` - If True, the newly-created virtualenv will
-        expose the system site package. If False, these will be hidden.
+    * ``path`` - The path to the virtualenv. This path will be created if it does not already exist.
+    * ``dependencies`` - a list of paths or URLs to Python packages to install with ``pip``.
+    * ``eggs`` - a list of paths or URLs to eggs to install with ``easy_install``. Eggs can be used to speed up deployments that require libraries to be compiled.
+    * ``system_site_packages`` - If True, the newly-created virtualenv will expose the system site package. If False, these will be hidden.
+    * ``python_binary`` - If not None, should be the path to python binary that will be used to create the virtualenv.
 
 ``fabvenv.prepare_virtualenv()``
 
@@ -48,5 +44,4 @@ Changelog
 
 * **0.2.1** - Fix bug in make_virtualenv with virtualenv.py installed by prepare_virtualenv.
 
-* **0.2.0** - make_virtualenv now updates ``system_site_packages`` flag on
-  previously-created virtualenvs.
+* **0.2.0** - make_virtualenv now updates ``system_site_packages`` flag on previously-created virtualenvs.
