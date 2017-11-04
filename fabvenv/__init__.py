@@ -91,7 +91,7 @@ def make_virtualenv(path, dependencies=[], eggs=[], system_site_packages=True,
             args = '--no-site-packages' if not system_site_packages else ''
 
         if python_binary:
-            args += '-p {}'.format(python_binary)
+            args += ' -p {}'.format(python_binary)
 
         run('{virtualenv} {args} {path}'.format(
             virtualenv=env.virtualenv,
